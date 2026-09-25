@@ -112,9 +112,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="350"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZBE-3e-d3J">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZBE-3e-d3J">
                                                     <rect key="frame" x="35" y="15" width="79" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -123,9 +122,24 @@
                                                     <rect key="frame" x="56" y="44" width="294" height="326"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
+                                                <visualEffectView hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Ma-tl-0XZ">
+                                                    <rect key="frame" x="56" y="44" width="294" height="306"/>
+                                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="q36-Ji-F9j">
+                                                        <rect key="frame" x="0.0" y="0.0" width="294" height="306"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    </view>
+                                                    <blurEffect style="dark"/>
+                                                </visualEffectView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="3Ma-tl-0XZ" secondAttribute="bottom" id="Qpx-Bh-k5w"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="3Ma-tl-0XZ" secondAttribute="trailing" id="Y25-eM-FcE"/>
+                                                <constraint firstItem="3Ma-tl-0XZ" firstAttribute="top" secondItem="ZBE-3e-d3J" secondAttribute="bottom" id="c7x-k7-JVC"/>
+                                                <constraint firstItem="3Ma-tl-0XZ" firstAttribute="leading" secondItem="rJ3-or-Qj2" secondAttribute="leadingMargin" id="tJA-v5-u7x"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="blurView" destination="3Ma-tl-0XZ" id="SGi-AT-hPk"/>
                                             <outlet property="captionLabel" destination="LDV-N9-uaF" id="gce-Gp-kNo"/>
                                             <outlet property="postImageView" destination="DiF-aU-0CH" id="L5B-Sc-9kH"/>
                                             <outlet property="usernameLabel" destination="ZBE-3e-d3J" id="4AM-aN-KwQ"/>

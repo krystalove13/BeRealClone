@@ -33,6 +33,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        // Always refresh posts & blur states when switching screens or accounts
         queryPosts()
     }
 
@@ -41,9 +42,15 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
 
     private func queryPosts() {
+        // 1. Get the date 24 hours ago
+        let yesterdayDate = Calendar.current.date(byAdding: .day, value: -1, to: Date())!
+
+        // 2. Query posts created yesterday onwards, ordered by most recent, capped at 10
         let query = Post.query()
             .include("user")
             .order([.descending("createdAt")])
+            .where("createdAt" >= yesterdayDate) // <- Only include results from the past 24 hours
+            .limit(10)                           // <- Limit max returned posts to 10
 
         query.find { [weak self] result in
             DispatchQueue.main.async {
